@@ -1,22 +1,58 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import HomeScreen from './src/screens/Estudiantes';
+import Estudiantes from './src/screens/Estudiantes';
+import Comida from './src/screens/Comida';
+import DetailScreen from './src/screens/DetailScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const MainStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+    <Stack.Screen name="Detail" component={DetailScreen} options={{ headerShown: false }} />
+  </Stack.Navigator>
+);
+
+const App = () => (
+  <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen
+          name="Main"
+          component={MainStack}
+          options={{
+            headerShown: false,
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="home" color={color} size={size} /> // Utiliza MaterialCommunityIcons
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Estudiantes"
+          component={Estudiantes}
+          options={{
+            headerShown: false,
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="home" color={color} size={size} /> // Utiliza MaterialCommunityIcons
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Comida"
+          component={Comida}
+          options={{
+            headerShown: false,
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="food" color={color} size={size} /> // Utiliza MaterialCommunityIcons
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
+);
+
+export default App;
