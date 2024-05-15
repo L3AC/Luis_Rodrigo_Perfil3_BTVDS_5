@@ -3,11 +3,9 @@ import { View, ScrollView, Text, StyleSheet } from 'react-native';
 import CardEstud from '../components/CardEstud'; // Asegúrate de importar correctamente el componente de tarjeta
 
 const Estudiantes = () => {
-    // Datos de ejemplo de los estudiantes
     const students = [
         { name: 'Luis Eduardo Alvarenga Claros', id: '20220298', image: require('../img/q.jpg') },
         { name: 'Rodrigo Alejandro Alvarado Rodríguez', id: '20220495', image: require('../img/alva.png') },
-        // Agrega más estudiantes según sea necesario
     ];
 
     return (
@@ -26,8 +24,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 16,
         marginBottom: 16,
-        textAlign: 'center', // Centrar el texto
-        marginVertical: 16, // Margen vertical
+        textAlign: 'center', 
+        marginVertical: 16, 
       },
     container: {
         padding: 16,
